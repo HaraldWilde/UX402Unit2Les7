@@ -1,0 +1,66 @@
+<mvc:View 
+	xmlns:core="sap.ui.core" 
+	xmlns:mvc="sap.ui.core.mvc" 
+	xmlns="sap.m" 
+	xmlns:f="sap.ui.layout.form"
+	xmlns:l="sap.ui.layout" 
+	controllerName="com.sap.training.ux402.fullscreen.UX402_FullScreenExercise.controller.Flights"
+	xmlns:html="http://www.w3.org/1999/xhtml">
+	<Page title="{CARRNAME}" navButtonPress="onNavBack" showNavButton="true">
+		<content>
+			<l:VerticalLayout>
+				<ObjectHeader title="{CARRNAME}" number="" numberUnit="{CURRENCY}" titleHref="{URL}">
+					<attributes>
+						<ObjectAttribute text="{Carrid}"></ObjectAttribute>
+						<ObjectAttribute text="{URL}"></ObjectAttribute>
+					</attributes>
+				</ObjectHeader>
+			</l:VerticalLayout>
+			<Table
+				id="idFlights"
+				width="auto"
+				items="{path: 'carrierFlights', sorter: { path: 'carrid' }}"
+				
+				mode="SingleSelectMaster"
+				growing="true" 
+				growingThreshold="10">
+				<headerToolbar>
+					<Toolbar id="lineItemsToolbar">
+						<Title text="Fliege" level="H2"/>
+					</Toolbar>
+				</headerToolbar>
+				<columns>
+					<Column>
+						<Text text="{i18n>carriername}"/>
+					</Column>
+						<Column>
+							<Text text="{i18n>flightno}"/>
+						</Column>
+						<Column>
+							<Text text="{i18n>flightdate}"/>
+						</Column>
+						<Column>
+							<Text text="{i18n>seatmax}"/>
+						</Column>
+						<Column hAlign="Right">
+							<Text text="{i18n>seatoc}"/>
+						</Column>
+				</columns>
+				<items>
+					<ColumnListItem>
+						<cells>
+							<ObjectIdentifier
+									title="{CARRNAME}" 
+									text="{carrid}"/>
+								<Text text="{connid}"/>
+
+								<Text text="{ path: 'fldate', type: 'sap.ui.model.type.Date' }"/>
+								<Text text="{SEATSMAX}"/>
+								<Text text="{SEATSOCC}"/>
+						</cells>
+					</ColumnListItem>
+				</items>
+			</Table>
+		</content>
+	</Page>
+</mvc:View>

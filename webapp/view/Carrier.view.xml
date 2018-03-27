@@ -1,0 +1,25 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m"
+	controllerName="com.sap.training.ux402.fullscreen.UX402_FullScreenExercise.controller.Carrier" xmlns:html="http://www.w3.org/1999/xhtml">
+	<Page title="{i18n>overviewPageTitle}">
+		<content>
+			<Table id="TFlights" headerText="Fliegts" items="{/CarrierCollection}">
+				<columns>
+					<Column>
+						<Text text="{i18n>columnId}"/>
+					</Column>
+					<Column>
+						<Text text="{i18n>columnName}"/>
+					</Column>
+				</columns>
+				<items>
+					<ColumnListItem press="onPress" type="Navigation">
+						<cells>
+							<ObjectIdentifier title="{carrid}"/>
+							<Text text="{CARRNAME}"/>
+						</cells>
+					</ColumnListItem>
+				</items>
+			</Table>
+		</content>
+	</Page>
+</mvc:View>

@@ -1,0 +1,202 @@
+{
+	"_version": "1.8.0",
+	"sap.app": {
+		"id": "com.sap.training.ux402.fullscreen.UX402_FullScreenExercise",
+		"type": "application",
+		"i18n": "i18n/i18n.properties",
+		"applicationVersion": {
+			"version": "1.0.0"
+		},
+		"title": "{{appTitle}}",
+		"description": "{{appDescription}}",
+		"sourceTemplate": {
+			"id": "servicecatalog.connectivityComponent",
+			"version": "0.0.0"
+		},
+		"dataSources": {
+			"RMTSAMPLEFLIGHT": {
+				"uri": "/sap/opu/odata/iwfnd/RMTSAMPLEFLIGHT/",
+				"type": "OData",
+				"settings": {
+					"odataVersion": "2.0",
+					"localUri": "localService/metadata.xml"
+				}
+			}
+		}
+	},
+	"sap.ui": {
+		"technology": "UI5",
+		"icons": {
+			"icon": "",
+			"favIcon": "",
+			"phone": "",
+			"phone@2": "",
+			"tablet": "",
+			"tablet@2": ""
+		},
+		"deviceTypes": {
+			"desktop": true,
+			"tablet": true,
+			"phone": true
+		},
+		"supportedThemes": [
+			"sap_hcb",
+			"sap_bluecrystal"
+		]
+	},
+	"sap.ui5": {
+		"rootView": {
+			"viewName": "com.sap.training.ux402.fullscreen.UX402_FullScreenExercise.view.Main",
+			"type": "XML"
+		},
+		"dependencies": {
+			"minUI5Version": "1.30.0",
+			"libs": {
+				"sap.ui.layout": {},
+				"sap.ui.core": {},
+				"sap.m": {}
+			}
+		},
+		"contentDensities": {
+			"compact": true,
+			"cozy": true
+		},
+		"models": {
+			"i18n": {
+				"type": "sap.ui.model.resource.ResourceModel",
+				"settings": {
+					"bundleName": "com.sap.training.ux402.fullscreen.UX402_FullScreenExercise.i18n.i18n"
+				}
+			},
+			"": {
+				"type": "sap.ui.model.odata.v2.ODataModel",
+				"settings": {
+					"defaultOperationMode": "Server",
+					"defaultBindingMode": "TwoWay",
+					"defaultCountMode": "Request"
+				},
+				"dataSource": "RMTSAMPLEFLIGHT",
+				"preload": true
+			}
+		},
+		"resources": {
+			"css": [
+				{
+					"uri": "css/style.css"
+				}
+			]
+		},
+		"routing": {
+			"config": {
+				"routerClass": "sap.m.routing.Router",
+				"viewType": "XML",
+				"transition": "slide",
+				"async": true,
+				"viewPath": "com.sap.training.ux402.fullscreen.UX402_FullScreenExercise.view",
+				"controlAggregation": "pages",
+				"clearAggregation": true,
+				"controlId": "idApp",
+				"bypassed": {
+					"target": [
+						"notFound"
+					]
+				}
+			},
+			"routes": [
+				{
+					"name": "overview",
+					"pattern": "",
+					"greedy": false,
+					"target": [
+						"overview"
+					]
+				},
+				{
+					"name": "flights",
+					"pattern": "carrier/{carrierId}",
+					"greedy": false,
+					"target": [
+						"flights"
+					]
+				},
+				{
+					"name": "Carrier",
+					"pattern": "Carrier",
+					"target": [
+						"carrier"
+					]
+				}
+			],
+			"targets": {
+				"overview": {
+					"viewType": "XML",
+					"clearAggregation": true,
+					"viewName": "Carrier",
+					"routerClass": "sap.m.routing.Router",
+					"async": true,
+					"viewPath": "com.sap.training.ux402.fullscreen.UX402_FullScreenExercise.view",
+					"controlAggregation": "pages",
+					"transition": "slide",
+					"viewLevel": 1,
+					"controlId": "idApp",
+					"bypassed": {
+						"target": [
+							"notFound"
+						]
+					}
+				},
+				"carrier": {
+					"viewType": "XML",
+					"viewName": "Carrier",
+					"routerClass": "sap.m.routing.Router",
+					"async": true,
+					"viewPath": "com.sap.training.ux402.fullscreen.UX402_FullScreenExercise.view",
+					"controlAggregation": "pages",
+					"transition": "slide",
+					"viewLevel": 2,
+					"clearAggregation": true,
+					"controlId": "idApp",
+					"bypassed": {
+						"target": [
+							"notFound"
+						]
+					}
+				},
+				"flights": {
+					"viewType": "XML",
+					"viewName": "Flights",
+					"routerClass": "sap.m.routing.Router",
+					"async": true,
+					"viewPath": "com.sap.training.ux402.fullscreen.UX402_FullScreenExercise.view",
+					"controlAggregation": "pages",
+					"transition": "slide",
+					"viewLevel": 2,
+					"clearAggregation": true,
+					"controlId": "idApp",
+					"bypassed": {
+						"target": [
+							"notFound"
+						]
+					}
+				},
+				"notFound": {
+					"viewType": "XML",
+					"viewName": "NotFound",
+					"viewLevel": 2,
+					"routerClass": "sap.m.routing.Router",
+					"transition": "slide",
+					"async": true,
+					"viewPath": "com.sap.training.ux402.fullscreen.UX402_FullScreenExercise.view",
+					"controlAggregation": "pages",
+					"clearAggregation": true,
+					"controlId": "idApp",
+					"bypassed": {
+						"target": [
+							"notFound"
+						]
+					}
+				}
+			}
+		}
+	}
+}
